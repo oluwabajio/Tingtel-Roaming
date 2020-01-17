@@ -49,10 +49,7 @@ public class HistoryFragment extends Fragment {
 
         LoadDatabaseData(SimIccid, BalanceType, null);
 
-
         return view;
-
-
     }
 
     private void LoadDatabaseData(final String SimIccid, final String BalanceType, final String SimName) {
