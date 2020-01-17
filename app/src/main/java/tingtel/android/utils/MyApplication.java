@@ -11,12 +11,14 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
+import tingtel.android.models.ApplicationModel;
 
 public class MyApplication  extends Application implements LifecycleObserver {
 
     private static MyApplication myApplication;
     private static final String CUSTOMER_SESSION = "Tingtelpref";
 
+ApplicationModel applicationModel = new ApplicationModel();
 
     public static MyApplication getInstance() {
         return myApplication;
@@ -47,7 +49,7 @@ public class MyApplication  extends Application implements LifecycleObserver {
         //   checkSimCards();
 
 
-        // appstate = "foreground";
+        applicationModel.setAppstate("foreground");
     }
 
 
@@ -55,6 +57,6 @@ public class MyApplication  extends Application implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void appInPauseState() {
         Log.e("logmessage", "In Background");
-        // appstate = "background";
+        applicationModel.setAppstate("background");
     }
 }

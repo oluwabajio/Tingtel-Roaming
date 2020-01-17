@@ -38,11 +38,16 @@ public class SessionManager {
     private static final String NUM_OF_SIMS_FOUND = "NUM_OF_SIMS_FOUND";
     private static final String IS_IT_FROM_TRANSFER_ACTIVITY = "IS_IT_FROM_TRANSFER_ACTIVITY";
 
+    private static final String RECEIVER_STATUS = "RECEIVER_STATUS";
+
     private final SharedPreferences pref = getSharedPreferencesCustomer();
 
 
     private static final String OnBoardStatus = "ONBOARD_STATUS";
     private static final String COUNTRY = "COUNTRY";
+    private static final String COUNTRYSIM1 = "COUNTRY_SIM1";
+    private static final String COUNTRYSIM2 = "COUNTRY_SIM2";
+
 
     private void setIntPreference(String name, int value) {
         SharedPreferences.Editor editor = pref.edit();
@@ -370,5 +375,29 @@ public class SessionManager {
     }
     public void setCountry(String Country) {
         setStringPreference(COUNTRY, Country);
+    }
+
+    public String getCountrysim1() {
+        return getStringPreference(COUNTRYSIM1);
+    }
+
+    public void setCountrysim1(String Country) {
+        setStringPreference(COUNTRYSIM1, Country);
+    }
+
+    public String getCountrysim2() {
+        return getStringPreference(COUNTRYSIM2);
+    }
+
+    public void setCountrysim2(String Country) {
+        setStringPreference(COUNTRYSIM2, Country);
+    }
+
+    public String getReceiverStatus() {
+        return getStringPreference(RECEIVER_STATUS);
+    }
+
+    public void setReceiverStatus(String msg) {
+        setStringPreference(RECEIVER_STATUS, msg);
     }
 }

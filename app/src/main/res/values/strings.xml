@@ -1,19 +1,24 @@
 <resources>
-    <string name="app_name">Tingtel Android </string>
+    <string name="app_name">Tingtel</string>
 
     <!-- OnBoard Screen. -->
 
-    <string name="ob_header1">SIMPLE ABROAD CALLS</string>
-    <string name="ob_header2">FREE WONEP TO WONEP</string>
-    <string name="ob_header3">NO HIDDEN CHARGES OR FEES</string>
+    <string name="accessibility_service_description">This privilege grants Tingtel the ability to get your ussd response from popups and display it on the app. Enable
+    Tingtel accessibility service by tapping the toggle switch in the upper right corner.
+    Press the back button twice to return to Tingtel</string>
+
+    <string name="ob_header1">WELCOME TO TINGTEL</string>
+    <string name="ob_header2">GET BALANCE IN REAL-TIME</string>
+    <string name="ob_header3">PERMISSION REQUIRED</string>
 
     <string name="ob_get_started">GET STARTED</string>
 
-    <string name="ob_desc1">Wonep converts international calls to local calls without WiFi or data</string>
-    <string name="ob_desc2">If the person you’re calling also has Wonep the call will be entirely free</string>
-    <string name="ob_desc3">We have a very small charge for non-Wonep calls to mobiles or landlines</string>
+    <string name="ob_desc1">Tingtel is a unified app to check  Data Balance of Networks all over the world</string>
+    <string name="ob_desc2">You dont need to memorize ussd codes to check data &amp; airtime balance</string>
+    <string name="ob_desc3">To use Tingtel, kindly accept the required permissions, Click on "Get Started"</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading_please_wait">Please Wait</string>
 
 </resources>
