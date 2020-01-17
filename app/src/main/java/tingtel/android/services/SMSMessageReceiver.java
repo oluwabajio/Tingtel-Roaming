@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import java.util.Objects;
-
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import java.util.Objects;
+
 import tingtel.android.models.ApplicationModel;
 
 public class SMSMessageReceiver extends BroadcastReceiver {

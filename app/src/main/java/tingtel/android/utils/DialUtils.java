@@ -15,15 +15,15 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.List;
-import java.util.Objects;
-
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
+import java.util.Objects;
 
 import static tingtel.android.utils.AppUtils.dismissLoadingDialog;
 
@@ -57,12 +57,11 @@ public class DialUtils {
                         Log.e("logmessage", "success sim 1 : " + response.toString());
                         if (response.toString() != null) {
 
-                                showResponseDialog(context, response.toString());
+                            showResponseDialog(context, response.toString());
 
-                            }
-                            sendIntentThroughBroadcastReceiver(context, response.toString());
                         }
-
+                        sendIntentThroughBroadcastReceiver(context, response.toString());
+                    }
 
 
                     @Override
@@ -104,7 +103,7 @@ public class DialUtils {
                             Log.e("logmessage", "success sim 2" + response.toString());
                             if (response.toString() != null) {
 
-                                    showResponseDialog(context, response.toString());
+                                showResponseDialog(context, response.toString());
 
                                 sendIntentThroughBroadcastReceiver(context, response.toString());
                             }

@@ -5,20 +5,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import java.util.concurrent.TimeUnit;
-
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
+
 import tingtel.android.models.ApplicationModel;
 
-public class MyApplication  extends Application implements LifecycleObserver {
+public class MyApplication extends Application implements LifecycleObserver {
 
     private static MyApplication myApplication;
     private static final String CUSTOMER_SESSION = "Tingtelpref";
 
-ApplicationModel applicationModel = new ApplicationModel();
+    ApplicationModel applicationModel = new ApplicationModel();
 
     public static MyApplication getInstance() {
         return myApplication;
@@ -27,9 +26,6 @@ ApplicationModel applicationModel = new ApplicationModel();
     public static SharedPreferences getSharedPreferencesCustomer() {
         return myApplication.getSharedPreferences(CUSTOMER_SESSION, Context.MODE_PRIVATE);
     }
-
-
-
 
 
     @Override

@@ -9,9 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
+
 import java.util.Objects;
 
-import androidx.appcompat.app.AlertDialog;
 import tingtel.android.R;
 import tingtel.android.services.UssdMessageReceiver;
 

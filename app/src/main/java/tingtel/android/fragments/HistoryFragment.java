@@ -1,24 +1,19 @@
 package tingtel.android.fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import tingtel.android.R;
 import tingtel.android.adapters.BalanceAdapter;
 import tingtel.android.databases.AppDatabase;
@@ -40,7 +35,7 @@ public class HistoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
-        Toast.makeText(getActivity(), ""+ getArguments().getString("SimSerial")
+        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
                 + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
 
 
@@ -52,13 +47,12 @@ public class HistoryFragment extends Fragment {
 
         BalanceType = getArguments().getString("BalanceType");
 
-            LoadDatabaseData(SimIccid, BalanceType, null);
+        LoadDatabaseData(SimIccid, BalanceType, null);
 
 
         return view;
-       
 
-       
+
     }
 
     private void LoadDatabaseData(final String SimIccid, final String BalanceType, final String SimName) {
@@ -72,7 +66,7 @@ public class HistoryFragment extends Fragment {
                 //show latest items first
                 Collections.reverse(items);
                 adapter = new BalanceAdapter(getActivity(), items);
-                Toast.makeText(getActivity(), "Size is " + items.size(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Size is " + items.size(), Toast.LENGTH_SHORT).show();
                 try {
                     Rv_Balance.setAdapter(adapter);
                     adapter.notifyDataSetChanged();

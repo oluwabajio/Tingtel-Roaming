@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-import java.util.Collections;
-import java.util.List;
-
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import java.util.Collections;
+import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
@@ -45,7 +45,7 @@ public class UssdMessageReceiver extends AccessibilityService {
 
         if (TextUtils.isEmpty(text)) return;
         // Close dialog
-     //   performGlobalAction(GLOBAL_ACTION_BACK); // This works on 4.1+ only
+        //   performGlobalAction(GLOBAL_ACTION_BACK); // This works on 4.1+ only
 
         Log.d(TAG, text);
         // Handle USSD response here

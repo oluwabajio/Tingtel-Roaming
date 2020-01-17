@@ -3,16 +3,15 @@ package tingtel.android.utils;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 
+import androidx.core.app.ActivityCompat;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.core.app.ActivityCompat;
 
 public class NetworkCarrierUtils {
 
@@ -36,17 +35,17 @@ public class NetworkCarrierUtils {
                     // Toast.makeText(activity, "" + mnc + mcc, Toast.LENGTH_SHORT).show();
 //todo: check
 
-                        carrierNameList.add(carrierName);
-                        numberOfSimsOnTheDevice += 1;
-                        if (numberOfSimsOnTheDevice == 1) {
-                            sessionManager.setNetworkName(displayName.toString());
-                            sessionManager.setNumberOfSimsOnTheDevice(numberOfSimsOnTheDevice);
-                            sessionManager.setSimSerialICCID(iccid);
-                        } else if (numberOfSimsOnTheDevice == 2) {
-                            sessionManager.setNetworkName1(displayName.toString());
-                            sessionManager.setNumberOfSimsOnTheDevice1(numberOfSimsOnTheDevice);
-                            sessionManager.setSimSerialICCID1(iccid);
-                        }
+                    carrierNameList.add(carrierName);
+                    numberOfSimsOnTheDevice += 1;
+                    if (numberOfSimsOnTheDevice == 1) {
+                        sessionManager.setNetworkName(displayName.toString());
+                        sessionManager.setNumberOfSimsOnTheDevice(numberOfSimsOnTheDevice);
+                        sessionManager.setSimSerialICCID(iccid);
+                    } else if (numberOfSimsOnTheDevice == 2) {
+                        sessionManager.setNetworkName1(displayName.toString());
+                        sessionManager.setNumberOfSimsOnTheDevice1(numberOfSimsOnTheDevice);
+                        sessionManager.setSimSerialICCID1(iccid);
+                    }
 
                 }
                 if (numberOfSimsOnTheDevice == 0) {
