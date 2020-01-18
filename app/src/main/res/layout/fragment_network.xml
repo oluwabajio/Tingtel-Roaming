@@ -80,8 +80,9 @@
                         android:id="@+id/tvSim1Country"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ng"
+                        android:text="..."
                         android:layout_marginRight="10dp"
+                        android:maxLength="9"
                         android:layout_toLeftOf="@id/img_History1"/>
 
                     <ImageView
@@ -148,9 +149,10 @@
                         android:id="@+id/tvSim2Country"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ng"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@id/img_History2"/>
+                        android:layout_marginRight="12dp"
+                        android:layout_toLeftOf="@id/img_History2"
+                        android:maxLength="9"
+                        android:text="..." />
 
                     <ImageView
                         android:id="@+id/img_History2"

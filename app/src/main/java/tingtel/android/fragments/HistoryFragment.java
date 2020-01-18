@@ -1,6 +1,7 @@
 package tingtel.android.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,11 @@ public class HistoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
-        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
-                + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
+        Log.e("TingtelMessage", "" + getArguments().getString("SimSerial")
+                + getArguments().getString("BalanceType"));
+
+//        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
+//                + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
 
 
         appdatabase = AppDatabase.getDatabaseInstance(getActivity());
@@ -59,8 +63,8 @@ public class HistoryFragment extends Fragment {
         //load saved room data to recyclerview
         Runnable r = () -> {
             items.clear();
-            //items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid, BalanceType);
-            items = appdatabase.balanceDao().getAllItems();
+            items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid, "Data");
+         //   items = appdatabase.balanceDao().getAllItems();
             getActivity().runOnUiThread(() -> {
                 Rv_Balance.setLayoutManager(new LinearLayoutManager(getActivity()));
                 //show latest items first

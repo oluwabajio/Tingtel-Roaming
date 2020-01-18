@@ -97,8 +97,8 @@ public class NetworkFragment extends Fragment {
 
     private void loadSavedData() {
         tvCountry.setText(sessionManager.getCountry());
-        tvSim1Country.setText(sessionManager.getCountrysim1());
-        tvSim2Country.setText(sessionManager.getCountrysim2());
+        tvSim1Country.setText(sessionManager.getCountry());
+        tvSim2Country.setText(sessionManager.getCountry());
 
     }
 
@@ -191,8 +191,8 @@ public class NetworkFragment extends Fragment {
                         sessionManager.setCountrysim1(name);
                         sessionManager.setCountrysim2(name);
 
-                        tvSim1Country.setText(code);
-                        tvSim2Country.setText(code);
+                        tvSim1Country.setText(name);
+                        tvSim2Country.setText(name);
 
                         picker.dismiss();
                     }
@@ -214,7 +214,7 @@ public class NetworkFragment extends Fragment {
 
                         sessionManager.setCountrysim1(name);
 
-                        tvSim1Country.setText(code);
+                        tvSim1Country.setText(name);
 
                         picker.dismiss();
                     }
@@ -235,7 +235,7 @@ public class NetworkFragment extends Fragment {
 
                         sessionManager.setCountrysim2(name);
 
-                        tvSim2Country.setText(code);
+                        tvSim2Country.setText(name);
 
                         picker.dismiss();
                     }
@@ -253,7 +253,6 @@ public class NetworkFragment extends Fragment {
 
 
                 countrySelectValidation(sessionManager.getCountrysim1());
-
                 checkCountryUssd(Sim1Network, 0, Sim1Serial);
                 applicationModel.setSimname(Sim1Network);
                 applicationModel.setServiceType("Data");
@@ -2037,7 +2036,7 @@ public class NetworkFragment extends Fragment {
             if (Objects.requireNonNull(intent.getAction()).equalsIgnoreCase("TingtelMessage")) {
                 String msg = intent.getStringExtra("message");
                 //analyze the message content
-                checkPopupMessageForUssdHighVersion(msg);
+                   checkPopupMessageForUssdHighVersion(msg);
                 Log.e("logtingtel", "High Version");
 
             } else if (Objects.requireNonNull(intent.getAction()).equalsIgnoreCase("TintelIntentMessage")) {
@@ -2104,6 +2103,7 @@ public class NetworkFragment extends Fragment {
     public void onDestroy() {
 
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(UssdReceiver);
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(UssdReceiverHighVersion);
         sessionManager.setReceiverStatus("NotStarted");
         Log.e("logmessage", "ondestroy");
         super.onDestroy();
@@ -2113,6 +2113,7 @@ public class NetworkFragment extends Fragment {
 
         if (!(sessionManager.getReceiverStatus().equalsIgnoreCase("Started"))) {
             LocalBroadcastManager.getInstance(getActivity()).registerReceiver(UssdReceiver, new IntentFilter("TintelIntentMessage"));
+            LocalBroadcastManager.getInstance(getActivity()).registerReceiver(UssdReceiverHighVersion, new IntentFilter("TingtelMessage"));
         Log.e("logmessage", "is false");
         }
         sessionManager.setReceiverStatus("Started");
@@ -2140,6 +2141,26 @@ public class NetworkFragment extends Fragment {
             Log.e("logmessage", "2222222" + message + " Low Version");
 
             checkPopupMessageForUssdLowVersion(message);
+
+
+
+
+
+        }
+    };
+
+
+    //Broadcast receiver to receive ussd code for android version above 8
+    public BroadcastReceiver UssdReceiverHighVersion = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.e("logmessage", "2222222"  + " High Version");
+            String message = intent.getStringExtra("message");
+            //  Toast.makeText(context, "received", Toast.LENGTH_SHORT).show();
+
+            Log.e("logmessage", "2222222" + message + " High Version");
+
+            checkPopupMessageForUssdHighVersion(message);
 
 
 
