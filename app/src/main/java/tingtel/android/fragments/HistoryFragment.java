@@ -66,7 +66,7 @@ public class HistoryFragment extends Fragment {
 //            items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid, "Data");
          //   items = appdatabase.balanceDao().getAllItems();
             items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid);
-            
+
             getActivity().runOnUiThread(() -> {
                 Rv_Balance.setLayoutManager(new LinearLayoutManager(getActivity()));
                 //show latest items first

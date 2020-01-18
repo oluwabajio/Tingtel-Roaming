@@ -272,6 +272,9 @@ public class NetworkFragment extends Fragment {
             public void onClick(View view) {
                 countrySelectValidation(sessionManager.getCountrysim2());
 
+
+                checkAndDisplayBalanceDialog(Sim1Network, 0, Sim1Serial, sessionManager.getCountrysim1());
+
                 checkCountryUssdData(Sim2Network, 1, Sim2Serial);
                 applicationModel.setSimname(Sim2Network);
                 applicationModel.setServiceType("Data");
@@ -279,10 +282,10 @@ public class NetworkFragment extends Fragment {
         });
     }
 
-    private void checkAndDisplayBalanceDialog(String sim1Network, int simNo, String simSerial, String countrysim) {
+    private void checkAndDisplayBalanceDialog(String simNetwork, int simNo, String simSerial, String countrysim) {
 
         if (countrysim.equalsIgnoreCase("Nigeria") || countrysim.equalsIgnoreCase("Ghana")){
-            displayBalanceDialog(Sim1Network, simNo, simSerial, countrysim);
+            displayBalanceDialog(simNetwork, simNo, simSerial, countrysim);
             return;
         }
 
