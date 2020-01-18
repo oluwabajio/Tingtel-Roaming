@@ -56,12 +56,16 @@ public class OnBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_on_board);
 
         if (sessionManager.getOnboardStatus()) {
             Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
             startActivity(intent);
         }
+
+
+        setContentView(R.layout.activity_on_board);
+
+
 
         btn_get_started = (Button) findViewById(R.id.btn_get_started);
         onboard_pager = (ViewPager) findViewById(R.id.pager_introduction);
