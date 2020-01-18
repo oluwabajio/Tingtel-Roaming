@@ -134,7 +134,7 @@
                         android:id="@+id/tvSim2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sim 1: "
+                        android:text="Sim 2: "
                         android:layout_alignParentLeft="true"/>
                     <TextView
                         android:id="@+id/tvSim2Network"

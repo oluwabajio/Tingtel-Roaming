@@ -41,4 +41,7 @@ public interface BalanceDao {
     @Query("SELECT * FROM Balance WHERE SimUuid = :iccid AND type = :type")
     List<Balance>  getAirtimeOrDataList(String iccid, String type);
 
+    @Query("SELECT * FROM Balance WHERE SimUuid = :iccid")
+    List<Balance>  getAirtimeOrDataList(String iccid);
+
 }

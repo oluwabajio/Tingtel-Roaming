@@ -39,8 +39,8 @@ public class HistoryFragment extends Fragment {
         Log.e("TingtelMessage", "" + getArguments().getString("SimSerial")
                 + getArguments().getString("BalanceType"));
 
-//        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
-//                + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
+                + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
 
 
         appdatabase = AppDatabase.getDatabaseInstance(getActivity());
@@ -63,8 +63,10 @@ public class HistoryFragment extends Fragment {
         //load saved room data to recyclerview
         Runnable r = () -> {
             items.clear();
-            items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid, "Data");
+//            items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid, "Data");
          //   items = appdatabase.balanceDao().getAllItems();
+            items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid);
+            
             getActivity().runOnUiThread(() -> {
                 Rv_Balance.setLayoutManager(new LinearLayoutManager(getActivity()));
                 //show latest items first

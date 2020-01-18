@@ -91,6 +91,13 @@ public class Constants {
     public static final String QCELL_GM_DATA_BALANCE = "*303*5#";
 
 
+    //Gambia GH Network Data balance
+    public static final String MTN_GH_DATA_BALANCE = "*138*1*8#";
+    public static final String VODAFONE_GH_DATA_BALANCE = "*700*2#";
+    public static final String AIRTELTIGO_GH_DATA_BALANCE = "*123#";
+    public static final String GLO_GH_DATA_BALANCE = "*127#";
+
+
     //Kenya KE Network Data balance
     public static final String AIRTELL_KE_DATA_BALANCE = "*131#";
     public static final String SAFARICOM_TELECOM_KE_DATA_BALANCE = "*544#";
@@ -230,6 +237,13 @@ public class Constants {
     public static final String GIFFGAFF_GB_DATA_BALANCE = "*#100#";
 
 
+
+
+    //Nigeria Network Airtime balance
+    public static final String ETISALAT_NG_AIRTIME_BALANCE = "*232#";
+    public static final String AIRTEL_NG_AIRTIME_BALANCE = "*123#";
+    public static final String MTN_NG_AIRTIME_BALANCE = "*556#";
+    public static final String GLO_NG_AIRTIME_BALANCE = "*124#";
 
 
 }
