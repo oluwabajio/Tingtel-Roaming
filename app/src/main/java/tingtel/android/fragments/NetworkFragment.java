@@ -258,9 +258,10 @@ public class NetworkFragment extends Fragment {
                 countrySelectValidation(sessionManager.getCountrysim1());
 
 
-                checkAndDisplayBalanceDialog(Sim1Network, 0, Sim1Serial, sessionManager.getCountrysim1());
-
-
+                if (checkToDisplayBalanceDialog(sessionManager.getCountrysim1())) {
+                    displayBalanceDialog(Sim1Network, 0, Sim1Serial, sessionManager.getCountrysim1());
+                    return;
+                }
                 checkCountryUssdData(Sim1Network, 0, Sim1Serial);
                 applicationModel.setSimname(Sim1Network);
                 applicationModel.setServiceType("Data");
@@ -273,7 +274,10 @@ public class NetworkFragment extends Fragment {
                 countrySelectValidation(sessionManager.getCountrysim2());
 
 
-                checkAndDisplayBalanceDialog(Sim1Network, 0, Sim1Serial, sessionManager.getCountrysim1());
+                if (checkToDisplayBalanceDialog(sessionManager.getCountrysim2())) {
+                    displayBalanceDialog(Sim2Network, 1, Sim2Serial, sessionManager.getCountrysim2());
+                    return;
+                }
 
                 checkCountryUssdData(Sim2Network, 1, Sim2Serial);
                 applicationModel.setSimname(Sim2Network);
@@ -282,11 +286,12 @@ public class NetworkFragment extends Fragment {
         });
     }
 
-    private void checkAndDisplayBalanceDialog(String simNetwork, int simNo, String simSerial, String countrysim) {
+    private boolean checkToDisplayBalanceDialog(String countrysim) {
 
         if (countrysim.equalsIgnoreCase("Nigeria") || countrysim.equalsIgnoreCase("Ghana")){
-            displayBalanceDialog(simNetwork, simNo, simSerial, countrysim);
-            return;
+            return true;
+        } else {
+            return false;
         }
 
     }
@@ -294,8 +299,8 @@ public class NetworkFragment extends Fragment {
     private void displayBalanceDialog(String simNetwork, int simNo, String simSerial, String countrysim) {
 
         final Dialog dialog = new Dialog(getActivity());
+        dialog.setCancelable(true);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
         dialog.setContentView(R.layout.balance_ask_dialog);
 
 
@@ -397,6 +402,7 @@ public class NetworkFragment extends Fragment {
                 } else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -477,6 +483,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -509,6 +516,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -536,6 +544,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -596,6 +605,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -638,6 +648,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -658,6 +669,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -693,6 +705,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -732,6 +745,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -774,6 +788,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -816,6 +831,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -885,6 +901,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -930,6 +947,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -972,6 +990,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1006,6 +1025,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1035,6 +1055,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1137,6 +1158,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1201,6 +1223,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1220,6 +1243,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1270,6 +1294,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1295,6 +1320,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1335,6 +1361,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1364,6 +1391,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1386,6 +1414,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1415,6 +1444,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1435,6 +1465,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1471,6 +1502,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1572,6 +1604,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1597,6 +1630,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1616,6 +1650,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1657,6 +1692,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1683,6 +1719,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1711,6 +1748,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1738,6 +1776,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1762,6 +1801,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1785,6 +1825,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1856,6 +1897,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1893,6 +1935,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1912,6 +1955,7 @@ public class NetworkFragment extends Fragment {
                 } else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -1992,6 +2036,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2015,6 +2060,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2040,6 +2086,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2114,6 +2161,7 @@ public class NetworkFragment extends Fragment {
                 } else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2194,6 +2242,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2226,6 +2275,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2253,6 +2303,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2313,6 +2364,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2355,6 +2407,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2375,6 +2428,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2410,6 +2464,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2449,6 +2504,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2491,6 +2547,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2533,6 +2590,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2602,6 +2660,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2647,6 +2706,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2698,6 +2758,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2727,6 +2788,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2829,6 +2891,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2893,6 +2956,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2912,6 +2976,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2962,6 +3027,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -2987,6 +3053,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3027,6 +3094,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3056,6 +3124,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3078,6 +3147,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3107,6 +3177,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3127,6 +3198,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3142,27 +3214,28 @@ public class NetworkFragment extends Fragment {
 
                 break;
             case "Nigeria":
-
+                Toast.makeText(getActivity(), "came here", Toast.LENGTH_LONG).show();
                 if (NetworkStartString.equalsIgnoreCase("air")) { //airtel
 
-                    UssdCode = AIRTEL_NG_DATA_BALANCE;
+                    UssdCode = AIRTEL_NG_AIRTIME_BALANCE;
 
                 } else if (NetworkStartString.equalsIgnoreCase("mtn")) { //mtn
 
-                    UssdCode = MTN_NG_DATA_BALANCE;
+                    UssdCode = MTN_NG_AIRTIME_BALANCE;
 
                 } else if (NetworkStartString.equalsIgnoreCase("glo")) { //glo
 
-                    UssdCode = GLO_NG_DATA_BALANCE;
+                    UssdCode = GLO_NG_AIRTIME_BALANCE;
 
                 } else if (NetworkStartString.equalsIgnoreCase("9mo") || (NetworkStartString.equalsIgnoreCase("eti"))) { //9mobile or etisalat
 
-                    UssdCode = ETISALAT_NG_DATA_BALANCE;
+                    UssdCode = ETISALAT_NG_AIRTIME_BALANCE;
 
                 }
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3264,6 +3337,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3289,6 +3363,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3308,6 +3383,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3349,6 +3425,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3375,6 +3452,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3403,6 +3481,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3430,6 +3509,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3454,6 +3534,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3477,6 +3558,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3548,6 +3630,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3585,6 +3668,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3604,6 +3688,7 @@ public class NetworkFragment extends Fragment {
                 } else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3684,6 +3769,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3707,6 +3793,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
@@ -3732,6 +3819,7 @@ public class NetworkFragment extends Fragment {
                 else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);

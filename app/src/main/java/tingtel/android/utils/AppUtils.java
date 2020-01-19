@@ -82,11 +82,11 @@ public class AppUtils {
 
 
     public static void initLoadingDialog(Context context) {
-        progress = ProgressDialog.show(context, null, null, true);
-        progress.setContentView(R.layout.progress_dialog_element);
-        progress.setCancelable(true);
+        progress = new ProgressDialog(context);
+        progress.setMessage("Running Ussd Code");
+        progress.setTitle("Tingtel");
+        progress.setCancelable(false);
         progress.setCanceledOnTouchOutside(false);
-        Objects.requireNonNull(progress.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         progress.show();
     }
 

@@ -61,6 +61,8 @@ public class DialUtils {
 
                         }
                         sendIntentThroughBroadcastReceiver(context, response.toString());
+                        //Dismiss the dialog
+                        dismissLoadingDialog();
                     }
 
 
