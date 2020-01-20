@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
@@ -12,12 +13,14 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 
 import tingtel.android.models.ApplicationModel;
 
+import static tingtel.android.utils.AppUtils.getSessionManagerInstance;
+
 public class MyApplication extends Application implements LifecycleObserver {
 
     private static MyApplication myApplication;
     private static final String CUSTOMER_SESSION = "Tingtelpref";
 
-    ApplicationModel applicationModel = new ApplicationModel();
+
 
     public static MyApplication getInstance() {
         return myApplication;
@@ -43,9 +46,12 @@ public class MyApplication extends Application implements LifecycleObserver {
         Log.e("logmessage", "In Foreground");
 
         //   checkSimCards();
-
+        ApplicationModel applicationModel = new ApplicationModel();
 
         applicationModel.setAppstate("foreground");
+
+        SessionManager sessionManager = getSessionManagerInstance();
+        sessionManager.setAppstate("foreground");
     }
 
 
@@ -53,6 +59,8 @@ public class MyApplication extends Application implements LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void appInPauseState() {
         Log.e("logmessage", "In Background");
-        applicationModel.setAppstate("background");
+        SessionManager sessionManager = getSessionManagerInstance();
+        sessionManager.setAppstate("background");
+       // applicationModel.setAppstate("background");
     }
 }

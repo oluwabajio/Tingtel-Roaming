@@ -47,6 +47,7 @@ public class SessionManager {
     private static final String COUNTRY = "COUNTRY";
     private static final String COUNTRYSIM1 = "COUNTRY_SIM1";
     private static final String COUNTRYSIM2 = "COUNTRY_SIM2";
+    private static final String APPSTATE = "APP_STATE";
 
 
     private void setIntPreference(String name, int value) {
@@ -400,4 +401,13 @@ public class SessionManager {
     public void setReceiverStatus(String msg) {
         setStringPreference(RECEIVER_STATUS, msg);
     }
+
+    public String getAppState() {
+
+        return getStringPreference(APPSTATE);
+    }
+    public void setAppstate(String AppState) {
+        setStringPreference(APPSTATE, AppState);
+    }
+
 }

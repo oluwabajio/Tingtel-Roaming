@@ -17,10 +17,10 @@ public class Constants {
 
     //Angola Network Data balance
     public static final String UNITEL_AO_DATA_BALANCE = "*111#";
-    public static final String MOVICELL_AO_DATA_BALANCE = "*200#";
+    public static final String MOVICELL_AO_DATA_BALANCE = "*300*6#";
 
     //Benin Network Data balance
-    public static final String MTN_BJ_DATA_BALANCE = "*111#";
+    public static final String MTN_BJ_DATA_BALANCE = "*130*2#";
     public static final String MOOV_BJ_DATA_BALANCE = "*200#";
 
     //Botswana BW Network Data balance
@@ -244,6 +244,15 @@ public class Constants {
     public static final String AIRTEL_NG_AIRTIME_BALANCE = "*123#";
     public static final String MTN_NG_AIRTIME_BALANCE = "*556#";
     public static final String GLO_NG_AIRTIME_BALANCE = "*124#";
+
+    //Benin Network Airtime balance
+    public static final String MTN_BJ_AIRTIME_BALANCE = "*124#";
+    public static final String MOOV_BJ_AIRTIME_BALANCE = "*100#";
+
+
+    //Chad TD Network Data balance
+    public static final String TIGO_TD_AIRTIME_BALANCE = "*100#";
+    public static final String AIRTEL_TD_AIRTIME_BALANCE = "*137#";
 
 
 }

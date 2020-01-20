@@ -254,6 +254,11 @@ public class NetworkFragment extends Fragment {
                 //TODO; compare the country and network, then run ussd code.
 
 
+                if (sessionManager.getCountrysim1() == null) {
+                    Toast.makeText(getActivity(), "Kindly Select A Country", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
                 countrySelectValidation(sessionManager.getCountrysim1());
 
@@ -271,6 +276,13 @@ public class NetworkFragment extends Fragment {
         btnCheckBalance2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (sessionManager.getCountrysim2() == null) {
+                    Toast.makeText(getActivity(), "Kindly Select A Country", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 countrySelectValidation(sessionManager.getCountrysim2());
 
 
@@ -288,7 +300,8 @@ public class NetworkFragment extends Fragment {
 
     private boolean checkToDisplayBalanceDialog(String countrysim) {
 
-        if (countrysim.equalsIgnoreCase("Nigeria") || countrysim.equalsIgnoreCase("Ghana")){
+        if (countrysim.equalsIgnoreCase("Nigeria") || countrysim.equalsIgnoreCase("Ghana")
+        || (countrysim.equalsIgnoreCase("Benin")) || (countrysim.equalsIgnoreCase("Chad"))){
             return true;
         } else {
             return false;
@@ -2293,11 +2306,11 @@ public class NetworkFragment extends Fragment {
 
                 if (NetworkStartString.equalsIgnoreCase("mtn")) { //mtn
 
-                    UssdCode = MTN_BJ_DATA_BALANCE;
+                    UssdCode = MTN_BJ_AIRTIME_BALANCE;
 
                 } else if (NetworkStartString.equalsIgnoreCase("mov")) { //moov
 
-                    UssdCode = MOOV_BJ_DATA_BALANCE;
+                    UssdCode = MOOV_BJ_AIRTIME_BALANCE;
 
                 }
                 else {
@@ -3214,7 +3227,7 @@ public class NetworkFragment extends Fragment {
 
                 break;
             case "Nigeria":
-                Toast.makeText(getActivity(), "came here", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getActivity(), "came here", Toast.LENGTH_LONG).show();
                 if (NetworkStartString.equalsIgnoreCase("air")) { //airtel
 
                     UssdCode = AIRTEL_NG_AIRTIME_BALANCE;
@@ -3524,11 +3537,11 @@ public class NetworkFragment extends Fragment {
 
                 if (NetworkStartString.equalsIgnoreCase("tig")) { //tigo
 
-                    UssdCode = TIGO_TD_DATA_BALANCE;
+                    UssdCode = TIGO_TD_AIRTIME_BALANCE;
 
                 } else if (NetworkStartString.equalsIgnoreCase("air")) { //airrtel
 
-                    UssdCode = AIRTEL_TD_DATA_BALANCE;
+                    UssdCode = AIRTEL_TD_AIRTIME_BALANCE;
 
                 }
                 else {
@@ -4008,9 +4021,15 @@ public class NetworkFragment extends Fragment {
 //                myIntent.putExtra("message", messageBody);
                 String message = intent.getStringExtra("message");
 
-                if (applicationModel.getAppstate().equalsIgnoreCase("background")) {
+
+
+                //Toast.makeText(getActivity(),  sessionManager.getAppState(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getActivity(), ""+ sessionManager.getAppState(), Toast.LENGTH_SHORT).show();
+                if (sessionManager.getAppState().equalsIgnoreCase("background")) { //nullpointer crash
                     Log.e("logmessage", "App is in background, wont respond to sms");
                     return;
+                } else {
+                    Log.e("logmessage", "App is in foreground, wont respond to sms");
                 }
 
 

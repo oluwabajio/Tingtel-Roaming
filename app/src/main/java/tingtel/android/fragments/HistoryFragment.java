@@ -39,8 +39,8 @@ public class HistoryFragment extends Fragment {
         Log.e("TingtelMessage", "" + getArguments().getString("SimSerial")
                 + getArguments().getString("BalanceType"));
 
-        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
-                + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "" + getArguments().getString("SimSerial")
+//                + getArguments().getString("BalanceType"), Toast.LENGTH_SHORT).show();
 
 
         appdatabase = AppDatabase.getDatabaseInstance(getActivity());
