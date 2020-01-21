@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 
@@ -57,6 +58,7 @@ public class NetworkCarrierUtils {
                 } else if (numberOfSimsOnTheDevice == 2) {
                     sessionManager.setTotalNumberOfSimsDetectedOnDevice(numberOfSimsOnTheDevice);
                     sessionManager.setSimStatus("SIM1 SIM2");
+                    Log.e("getDefaultCarrier", "sim 1 sim2");
                 }
             } else {
                 // No explanation needed; request the permission

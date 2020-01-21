@@ -33,6 +33,8 @@ import java.util.Objects;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
+import tingtel.android.OnBoardActivity;
 import tingtel.android.R;
 import tingtel.android.models.ApplicationModel;
 import tingtel.android.services.UssdMessageReceiver;
@@ -45,6 +47,7 @@ import static tingtel.android.utils.AppUtils.isAccessServiceEnabled;
 import static tingtel.android.utils.Constants.*;
 import static tingtel.android.utils.DialUtils.dialUssdCodeForNewAPI;
 import static tingtel.android.utils.DialUtils.dialUssdCodeForOldAPI;
+import static tingtel.android.utils.NetworkCarrierUtils.getCarrierOfSim;
 import static tingtel.android.utils.SaveToDButils.saveAirtimeOrDataToDatabase;
 
 /**
@@ -63,6 +66,7 @@ public class NetworkFragment extends Fragment {
     NavController navController;
     String Sim1Serial, Sim2Serial;
     String Sim1Network, Sim2Network;
+    TextView tvCopyright;
 
 
     private ApplicationModel applicationModel;
@@ -88,20 +92,26 @@ public class NetworkFragment extends Fragment {
         initViews(view);
 
         initListeners(view);
-
+        getCarrierOfSim(getContext(), getActivity());
         // initCountrySpinner();
 
         getDataFromCarrier(view);
+
 
         loadSavedData();
         initBroadcastReceivers();
         return view;
     }
 
+
+
     private void loadSavedData() {
         tvCountry.setText(sessionManager.getCountry());
         tvSim1Country.setText(sessionManager.getCountry());
         tvSim2Country.setText(sessionManager.getCountry());
+
+
+        tvCopyright.setText("Copyright \u00a9 2020, Tingtel.");
 
     }
 
@@ -137,7 +147,7 @@ public class NetworkFragment extends Fragment {
 
 
         String NoOfSIm = sessionManager.getSimStatus();
-
+        Log.e("getDefaultCarrier", "No of sim is "+NoOfSIm);
 
         switch (NoOfSIm) {
             case "NO SIM":
@@ -371,31 +381,39 @@ public class NetworkFragment extends Fragment {
 
             case "United Arab Emirates":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+
                 break;
 
 
             case "Afghanistan":
+
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
 
 
             case "Antigua and Barbuda":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Anguilla":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Albania":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Armenia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -414,7 +432,7 @@ public class NetworkFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -425,57 +443,68 @@ public class NetworkFragment extends Fragment {
 
             case "Antarctica":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
 
 
             case "Argentina":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "AmericanSamoa":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Austria":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Australia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Aruba":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Åland Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bosnia and Herzegovina":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Barbados":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bangladesh":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Belgium":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -495,7 +524,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -507,11 +536,13 @@ public class NetworkFragment extends Fragment {
 
             case "Bulgaria":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bahrain":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -528,7 +559,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -540,6 +571,7 @@ public class NetworkFragment extends Fragment {
 
             case "Saint Barthélemy":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -556,7 +588,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -566,41 +598,49 @@ public class NetworkFragment extends Fragment {
 
             case "Bermuda":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Brunei Darussalam":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bolivia, Plurinational State of":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bonaire":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Brazil":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bahamas":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bhutan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Bouvet Island":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -617,7 +657,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -628,21 +668,25 @@ public class NetworkFragment extends Fragment {
 
             case "Belarus":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Belize":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Canada":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Cocos (Keeling) Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -660,7 +704,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -681,7 +725,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -692,11 +736,13 @@ public class NetworkFragment extends Fragment {
 
             case "Congo":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Switzerland":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -717,7 +763,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -728,11 +774,13 @@ public class NetworkFragment extends Fragment {
 
             case "Cook Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Chile":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -757,7 +805,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -769,21 +817,25 @@ public class NetworkFragment extends Fragment {
 
             case "China":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Colombia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Costa Rica":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Cuba":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -800,7 +852,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -811,26 +863,31 @@ public class NetworkFragment extends Fragment {
 
             case "Curacao":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Christmas Island":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Cyprus":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Czech Republic":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Germany":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -843,7 +900,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -854,41 +911,49 @@ public class NetworkFragment extends Fragment {
 
             case "Denmark":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Dominica":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Dominican Republic":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Algeria":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Ecuador":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Estonia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Egypt":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Western Sahara":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -896,11 +961,13 @@ public class NetworkFragment extends Fragment {
 
 
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Spain":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
@@ -913,7 +980,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -923,28 +990,36 @@ public class NetworkFragment extends Fragment {
 
             case "Finland":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Fiji":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Falkland Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
 
             case "Micronesia, Federated States of":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Faroe Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
+
             case "France":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Gabon":
@@ -959,7 +1034,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -968,19 +1043,29 @@ public class NetworkFragment extends Fragment {
 
             case "United Kingdom":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Grenada":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Georgia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "French Guiana":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Guernsey":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Ghana":
 
                 if (NetworkStartString.equalsIgnoreCase("mtn")) { //Mtn
@@ -1002,7 +1087,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1012,10 +1097,14 @@ public class NetworkFragment extends Fragment {
                 break;
             case "Gibraltar":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Greenland":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Gambia":
 
                 if (NetworkStartString.equalsIgnoreCase("afr")) { //Africell
@@ -1037,19 +1126,24 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Guinea":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Guadeloupe":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Equatorial Guinea":
 
                 if (NetworkStartString.equalsIgnoreCase("ora")) { //orrange
@@ -1067,91 +1161,144 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Greece":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "South Georgia and the South Sandwich Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Guatemala":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Guam":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Guinea-Bissau":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Guyana":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Hong Kong":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Heard Island and McDonald Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Honduras":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Croatia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Haiti":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Hungary":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Indonesia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Ireland":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Israel":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Isle of Man":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "India":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "British Indian Ocean Territory":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Iraq":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Iran, Islamic Republic of":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Iceland":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Italy":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Jersey":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Jamaica":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Jordan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Japan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Kenya": //Code: KE
 
 
@@ -1170,57 +1317,88 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
                 break;
+
             case "Kyrgyzstan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Cambodia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Kiribati":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Comoros":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Saint Kitts and Nevis":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "North Korea":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "South Korea":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Kuwait":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Cayman Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Kazakhstan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Lao People\'s Democratic Republic":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Lebanon":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Saint Lucia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Liechtenstein":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Sri Lanka":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Liberia":
 
                 if (NetworkStartString.equalsIgnoreCase("mtn")) { //Mtn
@@ -1235,7 +1413,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1255,39 +1433,58 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
                 break;
+
             case "Lithuania":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Luxembourg":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Latvia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Libyan Arab Jamahiriya":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Morocco":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Monaco":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Moldova":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Montenegro":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Saint Martin":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Madagascar":
 
                 if (NetworkStartString.equalsIgnoreCase("air")) { //Airtel
@@ -1306,19 +1503,24 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Marshall Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Macedonia, The Former Yugoslav Republic of":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Mali":
 
                 if (NetworkStartString.equalsIgnoreCase("ora")) { //Orange
@@ -1332,7 +1534,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1342,20 +1544,29 @@ public class NetworkFragment extends Fragment {
 
             case "Myanmar":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Mongolia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Macao":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Northern Mariana Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Martinique":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Mauritania":
 
                 if (NetworkStartString.equalsIgnoreCase("mau")) { //mauritell
@@ -1373,19 +1584,24 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Montserrat":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Malta":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Mauritius":
 
                 if (NetworkStartString.equalsIgnoreCase("ora")) { //Orange
@@ -1403,16 +1619,19 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Maldives":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Malawi":
 
                 if (NetworkStartString.equalsIgnoreCase("air")) { //Airtel
@@ -1426,19 +1645,24 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Mexico":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Malaysia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Mozambique":
 
                 if (NetworkStartString.equalsIgnoreCase("mce")) { //
@@ -1456,13 +1680,14 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Namibia":
 
 
@@ -1477,22 +1702,29 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "New Caledonia":
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
+
             case "Niger":
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
+
             case "Norfolk Island":
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
+
             case "Nigeria":
 
                 if (NetworkStartString.equalsIgnoreCase("air")) { //airtel
@@ -1514,7 +1746,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1523,86 +1755,145 @@ public class NetworkFragment extends Fragment {
                 break;
 
             case "Nicaragua":
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
+
             case "Netherlands":
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
+
             case "Norway":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+
                 break;
+
             case "Nepal":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+
                 break;
+
             case "Nauru":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+
                 break;
+
             case "Niue":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+
                 break;
+
             case "New Zealand":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Oman":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Panama":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Peru":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "French Polynesia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Papua New Guinea":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Philippines":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Pakistan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Poland":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Saint Pierre and Miquelon":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Pitcairn":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Puerto Rico":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Palestinian Territory, Occupied":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Portugal":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Palau":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Paraguay":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Qatar":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Réunion":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Romania":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Serbia":
 
-                break;
-            case "Russia":
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
 
                 break;
+
+            case "Russia":
+
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+                break;
+
             case "Rwanda":
 
                 if (NetworkStartString.equalsIgnoreCase("mtn")) { //mtn
@@ -1616,19 +1907,24 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Saudi Arabia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Solomon Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Seychelles":
 
                 if (NetworkStartString.equalsIgnoreCase("air")) { //Airte;
@@ -1642,13 +1938,14 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Sudan":
 
                 if (NetworkStartString.equalsIgnoreCase("mtn")) { //mtn
@@ -1662,31 +1959,44 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Sweden":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Singapore":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Saint Helena, Ascension and Tristan Da Cunha":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Slovenia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Svalbard and Jan Mayen":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Slovakia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Sierra Leone":
 
                 if (NetworkStartString.equalsIgnoreCase("afr")) { //Africell
@@ -1704,16 +2014,19 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "San Marino":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Senegal":
 
                 if (NetworkStartString.equalsIgnoreCase("Exp")) { //Expresso
@@ -1731,22 +2044,29 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
 
                 break;
+
             case "Somalia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Suriname":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "South Sudan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Sao Tome and Principe":
 
                 if (NetworkStartString.equalsIgnoreCase("uni")) { //Unitel
@@ -1760,7 +2080,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1770,14 +2090,17 @@ public class NetworkFragment extends Fragment {
 
             case "El Salvador":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Sint Maarten":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Syrian Arab Republic":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
             case "Swaziland":
 
@@ -1788,7 +2111,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1798,6 +2121,7 @@ public class NetworkFragment extends Fragment {
 
             case "Turks and Caicos Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Chad": //TD
@@ -1813,7 +2137,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1822,6 +2146,7 @@ public class NetworkFragment extends Fragment {
 
             case "French Southern Territories":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Togo":
@@ -1837,7 +2162,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1847,45 +2172,57 @@ public class NetworkFragment extends Fragment {
 
             case "Thailand":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Tajikistan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Tokelau":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "East Timor":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Turkmenistan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Tunisia":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Tonga":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "Turkey":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Trinidad and Tobago":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Tuvalu":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Taiwan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Tanzania, United Republic of":
@@ -1909,7 +2246,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1920,6 +2257,7 @@ public class NetworkFragment extends Fragment {
 
             case "Ukraine":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Uganda":
@@ -1947,7 +2285,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1957,7 +2295,9 @@ public class NetworkFragment extends Fragment {
 
             case "U.S. Minor Outlying Islands":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
+
             case "United States":
 
 
@@ -1967,7 +2307,7 @@ public class NetworkFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -1978,57 +2318,71 @@ public class NetworkFragment extends Fragment {
 
             case "Uruguay":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Uzbekistan":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Holy See (Vatican City State)":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Saint Vincent and the Grenadines":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Venezuela, Bolivarian Republic of":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Virgin Islands, British":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Virgin Islands, U.S.":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
             case "Viet Nam":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Vanuatu":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Wallis and Futuna":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Samoa":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Kosovo":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Yemen":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "Mayotte":
 
+                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
                 break;
 
             case "South Africa":
@@ -2048,7 +2402,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2072,7 +2426,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2098,7 +2452,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2173,7 +2527,7 @@ public class NetworkFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2254,7 +2608,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2287,7 +2641,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2315,7 +2669,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2376,7 +2730,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2419,7 +2773,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2440,7 +2794,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2476,7 +2830,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2516,7 +2870,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2559,7 +2913,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2602,7 +2956,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2672,7 +3026,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2718,7 +3072,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2770,7 +3124,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2800,7 +3154,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2903,7 +3257,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2968,7 +3322,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -2988,7 +3342,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3039,7 +3393,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3065,7 +3419,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3106,7 +3460,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3136,7 +3490,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3159,7 +3513,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3189,7 +3543,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3210,7 +3564,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3247,7 +3601,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3349,7 +3703,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3375,7 +3729,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3395,7 +3749,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3437,7 +3791,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3464,7 +3818,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3493,7 +3847,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3521,7 +3875,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3546,7 +3900,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3570,7 +3924,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3642,7 +3996,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3680,7 +4034,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3700,7 +4054,7 @@ public class NetworkFragment extends Fragment {
 
                 } else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3781,7 +4135,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3805,7 +4159,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3831,7 +4185,7 @@ public class NetworkFragment extends Fragment {
                 }
                 else {
 
-                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -3903,6 +4257,8 @@ public class NetworkFragment extends Fragment {
 
         tvSim1Network = view.findViewById(R.id.tvSim1Network);
         tvSim2Network = view.findViewById(R.id.tvSim2Network);
+
+        tvCopyright = view.findViewById(R.id.tv_copyright);
 //
 //        countrySpinner = view.findViewById(R.id.countrySpinner);
 
@@ -3962,6 +4318,11 @@ public class NetworkFragment extends Fragment {
 
     private void saveToDatabase(String simname, String message, String ServiceType) {
         String simiccid = applicationModel.getIccid();
+        if (applicationModel.getIccid() == null) {
+            Log.e("logmessage", "sim iccid not available");
+            return;
+        }
+
         Log.e("logmessage", simiccid);
 
         try {

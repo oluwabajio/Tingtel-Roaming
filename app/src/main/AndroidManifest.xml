@@ -13,6 +13,7 @@
         android:icon="@drawable/tingtel_one"
         android:label="@string/app_name"
         android:roundIcon="@drawable/tingtel_one"
+        android:logo="@drawable/tingtel_one"
         android:supportsRtl="true"
         android:name=".utils.MyApplication"
         android:theme="@style/AppTheme">

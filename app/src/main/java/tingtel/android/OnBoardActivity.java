@@ -63,8 +63,13 @@ public class OnBoardActivity extends AppCompatActivity {
         }
 
 
+
         setContentView(R.layout.activity_on_board);
 
+
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.tingtel_two);
 
 
         btn_get_started = (Button) findViewById(R.id.btn_get_started);

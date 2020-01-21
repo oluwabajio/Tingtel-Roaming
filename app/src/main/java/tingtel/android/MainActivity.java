@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        getSupportActionBar().setLogo(R.drawable.tingtel_one);
+//        getSupportActionBar().setDisplayShowHomeEnabled(false);
+//        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.tingtel_two);
+
 SessionManager sessionManager = getSessionManagerInstance();
 sessionManager.setReceiverStatus("NotStarted");
 
