@@ -1,6 +1,8 @@
 package tingtel.android.utils;
 
 public class Constants {
+
+
     public static String TAG = "TingtelLog";
 
     public static final String ETISALAT_AIRTIME_BALANCE = "*232#";
@@ -235,6 +237,35 @@ public class Constants {
     //united Kingdom GB Network Data balance
     public static final String VODAFONE_GB_DATA_BALANCE = "*#1345#";
     public static final String GIFFGAFF_GB_DATA_BALANCE = "*#100#";
+
+
+
+
+    ////////////////////////GLOBAL COUNTRIES///////////////////
+    //France FR Network Data Balance
+    public static final String ORANGE_FR_DATA_BALANCE = "#123#";
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

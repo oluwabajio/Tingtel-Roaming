@@ -40,6 +40,8 @@ import tingtel.android.models.ApplicationModel;
 import tingtel.android.services.UssdMessageReceiver;
 import tingtel.android.utils.SessionManager;
 
+import static tingtel.android.utils.AppUtils.ShowMessageDialog;
+import static tingtel.android.utils.AppUtils.ShowNoUssdFoundToast;
 import static tingtel.android.utils.AppUtils.checkAccessibilityServiceStatus;
 import static tingtel.android.utils.AppUtils.getSessionManagerInstance;
 import static tingtel.android.utils.AppUtils.initLoadingDialog;
@@ -1017,9 +1019,40 @@ public class NetworkFragment extends Fragment {
                 break;
 
 
-            case "France":
+            case "France": //FR
 
-                Toast.makeText(getActivity(), "Country not Supported Yet", Toast.LENGTH_LONG).show();
+//                Orange (by France Télécom)
+//                SFR (by Numericable)
+//                Bouygues Télécom
+//                Free Mobile (by Iliad)
+
+                if (NetworkStartString.equalsIgnoreCase("ora")) { //Orange
+
+                    UssdCode = ORANGE_FR_DATA_BALANCE;
+
+                } else if (NetworkStartString.equalsIgnoreCase("sfr")) { //SFR
+
+                    ShowMessageDialog(getActivity(), getResources().getString(R.string.sfr_balance_title), getResources().getString(R.string.sfr_balance_instruction));
+                    return;
+
+                } else if (NetworkStartString.equalsIgnoreCase("bou")) { //Bouygues Télécom
+
+                    ShowNoUssdFoundToast(getActivity());
+                    return;
+
+                } else if (NetworkStartString.equalsIgnoreCase("fre")) { //Free Mobile
+
+                    ShowNoUssdFoundToast(getActivity());
+                    return;
+
+                }
+                else {
+
+                    Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
+                    return;
+
+                }
+                requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
                 break;
 
             case "Gabon":
@@ -2305,13 +2338,32 @@ public class NetworkFragment extends Fragment {
 
                     UssdCode = "#225#";
 
-                } else {
+
+               } else if (NetworkStartString.equalsIgnoreCase("ver")) { //Verizon
+
+                    UssdCode = "##";
+
+                } else if (NetworkStartString.equalsIgnoreCase("bou")) { //Bouygues Télécom
+
+                    ShowNoUssdFoundToast(getActivity());
+                    return;
+
+                } else if (NetworkStartString.equalsIgnoreCase("fre")) { //Free Mobile
+
+                    ShowNoUssdFoundToast(getActivity());
+                    return;
+
+                }
+                else {
 
                     Toast.makeText(getActivity(), "Ussd Code not Available For This Network, Ensure you Select The Correct Country!", Toast.LENGTH_LONG).show();
                     return;
 
                 }
                 requestForDataBalance(SimNo, NetworkName, SimSerical, UssdCode);
+
+
+
 
 
                 break;

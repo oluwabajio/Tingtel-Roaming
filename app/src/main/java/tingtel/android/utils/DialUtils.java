@@ -166,10 +166,10 @@ public class DialUtils {
     private static void dialCode(String ussdCodeTodial, Activity activity, int simNumber) {
         //check if it begins with * and ends with #
         if (ussdCodeTodial.startsWith("*") && ussdCodeTodial.endsWith("#")) {
-            ussdCodeTodial = ussdCodeTodial.substring(1, ussdCodeTodial.length() - 1);
+            ussdCodeTodial = ussdCodeTodial.substring(0, ussdCodeTodial.length() - 1);
         }
         //create your own
-        String finalUssdCode = "*" + ussdCodeTodial + Uri.encode("#");
+        String finalUssdCode =  ussdCodeTodial + Uri.encode("#");
         //perform the action
         Intent intent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + finalUssdCode));
         intent.putExtra("com.android.phone.extra.slot", simNumber); //For sim 1
@@ -197,4 +197,22 @@ public class DialUtils {
                 .setMessage(message)
                 .show();
     }
+
+
+
+
+
+//    private static void dialCode(String ussdCodeTodial, Activity activity, int simNumber) {
+//        //check if it begins with * and ends with #
+//        if (ussdCodeTodial.startsWith("*") && ussdCodeTodial.endsWith("#")) {
+//            ussdCodeTodial = ussdCodeTodial.substring(1, ussdCodeTodial.length() - 1);
+//        }
+//        //create your own
+//        String finalUssdCode = "*" + ussdCodeTodial + Uri.encode("#");
+//        //perform the action
+//        Intent intent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + finalUssdCode));
+//        intent.putExtra("com.android.phone.extra.slot", simNumber); //For sim 1
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        activity.startActivity(intent);
+//    }
 }

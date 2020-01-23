@@ -1,5 +1,7 @@
 package tingtel.android.utils;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +10,13 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
@@ -90,4 +97,32 @@ public class AppUtils {
         progress.show();
     }
 
+
+    public static void ShowNoUssdFoundToast(Activity activity) {
+        Toast.makeText(activity, "No Ussd Available For This Network", Toast.LENGTH_LONG).show();
+    }
+
+    public static void ShowMessageDialog(Activity activity, String title, String message) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.setCancelable(true);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.balance_ask_dialog);
+
+        TextView tvTitle = (TextView) dialog.findViewById(R.id.txt_title);
+        TextView tvMessage = (TextView) dialog.findViewById(R.id.txt_message);
+
+
+
+        Button closeButton = (Button) dialog.findViewById(R.id.btn_close);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
 }
