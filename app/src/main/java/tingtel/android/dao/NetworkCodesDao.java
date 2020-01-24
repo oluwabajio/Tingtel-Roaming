@@ -18,6 +18,10 @@ public interface NetworkCodesDao {
     @Query("DELETE FROM NetworksCode")
     void delete();
 
-    @Query("SELECT * FROM NetworksCode WHERE name = :name")
-    List<NetworksCode> getItemsByName(String name);
+    @Query("SELECT * FROM NetworksCode WHERE country = :country")
+    List<NetworksCode> getCountryNetworks(String country);
+
+
+    @Query("SELECT * FROM NetworksCode WHERE country = :country AND network = :network")
+    List<NetworksCode> getNetworkCodes(String country, String network);
 }
