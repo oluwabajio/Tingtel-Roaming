@@ -1,6 +1,7 @@
 package tingtel.android.fragments;
 
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
+import androidx.collection.SimpleArrayMap;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -82,6 +85,7 @@ public class NetworkFragment extends Fragment {
     private ApplicationModel applicationModel;
 
     List<NetworksCode> networkLists = new ArrayList<>();
+    List<String> uniqueNetworkLists = new ArrayList<>();
     List<NetworksCode> codeList = new ArrayList<>();
 
     AppDatabase appDatabase;
@@ -314,9 +318,13 @@ public class NetworkFragment extends Fragment {
 
                                 } else if (n.size() == 1) {
                                     //execute code straight
-                                    requestBalance(0, Sim1Network, Sim1Serial, networkLists.get(0).getCode());
+                                    requestBalance(0, Sim1Network, Sim1Serial, n.get(0).getCode());
 
                                 }
+                            } else { //network could not be identified, show dialog to request network.
+
+                                displayRequestNetworkDialog(sessionManager.getCountrysim1(), Sim1Network, 0, Sim1Serial);
+
                             }
 
                         }
@@ -331,6 +339,8 @@ public class NetworkFragment extends Fragment {
 
                 applicationModel.setSimname(Sim1Network);
                 applicationModel.setServiceType("Data");
+
+
             }
         });
 
@@ -338,23 +348,70 @@ public class NetworkFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
+                //TODO; compare the country and network, then run ussd code.
+
+
                 if (sessionManager.getCountrysim2() == null) {
                     Toast.makeText(getActivity(), "Kindly Select A Country", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-                countrySelectValidation(sessionManager.getCountrysim2());
+                countrySelectValidation(sessionManager.getCountrysim1());
 
 
-                if (checkToDisplayBalanceDialog(sessionManager.getCountrysim2())) {
-                    //     displayBalanceDialog(Sim2Network, 1, Sim2Serial, sessionManager.getCountrysim2());
-                    return;
-                }
+                Runnable r = () -> {
+                    networkLists.clear();
+//            items = appdatabase.balanceDao().getAirtimeOrDataList(SimIccid, "Data");
+                    //   items = appdatabase.balanceDao().getAllItems();
+                    networkLists = appDatabase.networksCodesDao().getCountryNetworks(sessionManager.getCountrysim2());
+                    //codeList = appDatabase.networksCodesDao().getNetworkCodes(sessionManager.getCountrysim1(), )
 
-                // checkCountryUssdData(Sim2Network, 1, Sim2Serial);
+                    getActivity().runOnUiThread(() -> {
+
+
+                        if (networkLists.size() == 1) {
+                            ShowCountryNotAvailableToast();
+                        } else if (networkLists.size() > 1) {
+
+                            List<NetworksCode> n = new ArrayList<>();
+                            for (int i = 0; i < networkLists.size(); i++) {
+                                if (networkLists.get(i).getNetwork().substring(0, 3).equalsIgnoreCase(Sim2Network.substring(0, 3))) {
+                                    n.add(networkLists.get(i));
+                                }
+
+                            }
+
+                            if (n.size() > 0) {
+                                if (n.size() > 1) {
+                                    //show 2 balance dialog
+                                    displayBalanceDialog(Sim2Network, 1, Sim2Serial, sessionManager.getCountrysim2(), n);
+
+                                } else if (n.size() == 1) {
+                                    //execute code straight
+                                    requestBalance(1, Sim2Network, Sim2Serial, n.get(0).getCode());
+
+                                }
+                            } else {
+
+
+                            }
+
+                        }
+
+
+                    });
+                };
+
+                Thread newThread = new Thread(r);
+                newThread.start();
+
+
                 applicationModel.setSimname(Sim2Network);
                 applicationModel.setServiceType("Data");
+
+
             }
         });
     }
@@ -363,16 +420,7 @@ public class NetworkFragment extends Fragment {
         Toast.makeText(getActivity(), "Country Not Available yet", Toast.LENGTH_SHORT).show();
     }
 
-    private boolean checkToDisplayBalanceDialog(String countrysim) {
 
-        if (countrysim.equalsIgnoreCase("Nigeria") || countrysim.equalsIgnoreCase("Ghana")
-                || (countrysim.equalsIgnoreCase("Benin")) || (countrysim.equalsIgnoreCase("Chad"))) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
 
     private void displayBalanceDialog(String simNetwork, int simNo, String simSerial, String countrysim, List<NetworksCode> networkList) {
 
@@ -412,7 +460,79 @@ public class NetworkFragment extends Fragment {
     }
 
 
+    public void displayRequestNetworkDialog(String country, String SimNetwork, int SimNo, String SimSerial) {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setCancelable(true);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.network_ask_dialog);
 
+        Spinner spNetwork = (Spinner) dialog.findViewById(R.id.sp_network);
+        TextView tvMessage = (TextView) dialog.findViewById(R.id.txt_message);
+
+
+        Runnable r = () -> {
+            networkLists.clear();
+            uniqueNetworkLists.clear();
+
+            uniqueNetworkLists = appDatabase.networksCodesDao().getUniqueCountryNetworks(country);
+            networkLists = appDatabase.networksCodesDao().getCountryNetworks(country);
+
+        };
+
+        Thread newThread = new Thread(r);
+        newThread.start();
+
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, uniqueNetworkLists);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spNetwork.setAdapter(adapter);
+
+        Button checkBalanceButton = (Button) dialog.findViewById(R.id.btn_checkBalance);
+        checkBalanceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                List<NetworksCode> n = new ArrayList<>();
+                for (int i = 0; i < networkLists.size(); i++) {
+                    if (networkLists.get(i).getNetwork().equalsIgnoreCase(spNetwork.getSelectedItem().toString())) {
+                        n.add(networkLists.get(i));
+                    }
+
+                }
+
+                if (n.size() > 0) {
+                    if (n.size() > 1) {
+                        //show 2 balance dialog
+                        displayBalanceDialog(SimNetwork, SimNo, SimSerial, country, n);
+
+                    } else if (n.size() == 1) {
+                        //execute code straight
+                        requestBalance(SimNo, SimNetwork, SimSerial, networkLists.get(0).getCode());
+
+                    }
+                } else { //network could not be identified, show dialog to request network.
+
+                    Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+
+
+
+        applicationModel.setSimname(Sim1Network);
+        applicationModel.setServiceType("Data");
+
+
+    }
 
 
     private void countrySelectValidation(String countrysim) {
@@ -463,7 +583,7 @@ public class NetworkFragment extends Fragment {
                 }
             } else {
 
-                ShowMessageDialog(getActivity(),"Check Balance", UssdCode);
+                ShowMessageDialog(getActivity(), "Check Balance", UssdCode);
 
             }
         }

@@ -81,7 +81,11 @@ public class NetworksCode {
 
         return new NetworksCode[] {
 
-                new NetworksCode("United Arab Emirates", "Airtime Balance", "*123#", "This service enables you to check your current airtime balance which is available for calls", "tag"),
+                new NetworksCode("United Arab Emirates", "Du", "*135#", "", "tag"),
+                new NetworksCode("United Arab Emirates", "Etisalat", "*121#", "", "tag"),
+                new NetworksCode("United Arab Emirates", "Five Mobile", "*121#", "", "tag"),
+
+
                 new NetworksCode("Afghanistan", "", "", "", "tag"),
                 new NetworksCode("Antigua and Barbuda", "", "", "", "tag"),
                 new NetworksCode("Anguilla", "", "", "", "tag"),
@@ -94,10 +98,25 @@ public class NetworksCode {
 
 
                 new NetworksCode("Antarctica", "", "", "", "tag"),
-                new NetworksCode("Argentina", "", "", "", "tag"),
+
+
+                new NetworksCode("Argentina", "Claro", "*611#", "", "tag"),
+                new NetworksCode("Argentina", "Movistar", "To check balance, send any SMS to 444.", "", "tag"),
+                new NetworksCode("Argentina", "Personal", "*150#", "", "tag"),
+
+
                 new NetworksCode("AmericanSamoa", "", "", "", "tag"),
-                new NetworksCode("Austria", "", "", "", "tag"),
-                new NetworksCode("Australia", "", "", "", "tag"),
+
+
+                new NetworksCode("Austria", "A1", "*101#", "", "tag"),
+                new NetworksCode("Austria", "Magenta T", "*101#", "", "tag"),
+                new NetworksCode("Austria", "Magenta T", "*114#", "", "tag"),
+                new NetworksCode("Austria", "3 (= \"Drei\")", "Text \"GUT\" to 313 21.", "", "tag"),
+
+                new NetworksCode("Australia", "Telstra", "#100#", "", "tag"),
+                new NetworksCode("Australia", "Optus", "Text the number 1(one) to 9999.", "", "tag"),
+                new NetworksCode("Australia", "Vodafone Australia", "Call 1512 from your Vodafone phone or text 'BAL' to 1511", "", "tag"),
+
                 new NetworksCode("Aruba", "", "", "", "tag"),
                 new NetworksCode("Åland Islands", "", "", "", "tag"),
                 new NetworksCode("Bosnia and Herzegovina", "", "", "", "tag"),
@@ -114,7 +133,11 @@ public class NetworksCode {
 
 
                 new NetworksCode("Bulgaria", "", "", "", "tag"),
-                new NetworksCode("Bahrain", "", "", "", "tag"),
+
+
+                new NetworksCode("Bahrain", "Batelco", "*122#", "", "tag"),
+                new NetworksCode("Bahrain", "Zain", "*142#", "", "tag"),
+                new NetworksCode("Bahrain", "STC", "*124#", "", "tag"),
 
 
                 new NetworksCode("Burundi", "Econet", "*405#", "airtime", "tag"),
@@ -138,7 +161,14 @@ public class NetworksCode {
                 new NetworksCode("Brunei Darussalam", "", "", "", "tag"),
                 new NetworksCode("Bolivia, Plurinational State of", "", "", "", "tag"),
                 new NetworksCode("Bonaire", "", "", "", "tag"),
-                new NetworksCode("Brazil", "", "", "", "tag"),
+
+
+                new NetworksCode("Brazil", "Vivo", "Check balance by texting ‘SALDO’ to 8000", "", "tag"),
+                new NetworksCode("Brazil", "TIM", "*222#", "", "tag"),
+                new NetworksCode("Brazil", "Claro", "*555#", "", "tag"),
+                new NetworksCode("Brazil", "Oi", "You can check balance by typing *805", "", "tag"),
+
+
                 new NetworksCode("Bahamas", "", "", "", "tag"),
                 new NetworksCode("Bhutan", "", "", "", "tag"),
                 new NetworksCode("Bouvet Island", "", "", "", "tag"),
@@ -151,7 +181,14 @@ public class NetworksCode {
 
                 new NetworksCode("Belarus", "", "", "", "tag"),
                 new NetworksCode("Belize", "", "", "", "tag"),
-                new NetworksCode("Canada", "", "", "", "tag"),
+
+
+                new NetworksCode("Canada", "Rogers Wireless", "Call 1-888-764-3771 or *611 from your wireless device", "", "tag"),
+                new NetworksCode("Canada", "Bell Mobility", "Call #321 free from your mobile phone", "", "tag"),
+                new NetworksCode("Canada", "Telus Mobility", " Call #123 from your TELUS Prepaid device or 1-877-277-7745 from another phone", "", "tag"),
+                new NetworksCode("Canada", "Freedom Mobile (formerly Wind)", "Call *123# and follow the instructions.", "", "tag"),
+
+
                 new NetworksCode("Cocos (Keeling) Islands", "", "", "", "tag"),
 
 
@@ -179,7 +216,13 @@ public class NetworksCode {
                 new NetworksCode("Ivory Coast", "Moov", "*303*3*2*1#", "data", "tag"),
 
                 new NetworksCode("Cook Islands", "", "", "", "tag"),
-                new NetworksCode("Chile", "", "", "", "tag"),
+
+
+                new NetworksCode("Chile", "Entel", "To check balance dial *103# (free twice per day, $100 for each more)", "", "tag"),
+                new NetworksCode("Chile", "Movistar", "Check balance by *303# for a $70 fee", "", "tag"),
+                new NetworksCode("Chile", "Claro", "Text \"BALANCE\" to 725", "", "tag"),
+                new NetworksCode("Chile", "WOM", "Visit the WOM website at wom.cl", "", "tag"),
+                new NetworksCode("Chile", "Virgin Mobile", "To check your balance, call 103 for free, type *151# for $ 30", "", "tag"),
 
 
                 new NetworksCode("Cameroon", "Mtn", "*155#", "airtime", "tag"),
@@ -191,8 +234,19 @@ public class NetworksCode {
                 new NetworksCode("Cameroon", "Camtel", "*865*1#", "", "tag"),
 
 
-                new NetworksCode("China", "", "", "", "tag"),
-                new NetworksCode("Colombia", "", "", "", "tag"),
+                new NetworksCode("China", "China Mobile", "#130#", "", "tag"),
+                new NetworksCode("China", "China Unicorn", "text \"101\" to 10010 for airtime balance or send text \"2082\" to 10010 for data balance.", "", "tag"),
+                new NetworksCode("China", "China Telecom", " text \"101\" to \"10001\" on China Telecom to check balance OR call 10001 and follow the automated voice instructions to check your balance", "", "tag"),
+
+
+                new NetworksCode("Colombia", "Claro", "Text \"ACTIVAR\" to 852 63 or Enter *103# followed by the send button", "", "tag"),
+                new NetworksCode("Colombia", "Claro", "Enter *103# followed by the send button", "", "tag"),
+                new NetworksCode("Colombia", "Movistar", "Text \"SALDO\" to 611 or Enter *611# followed by the send button", "", "tag"),
+                new NetworksCode("Colombia", "Tigo Une", "*10#", "", "tag"),
+                new NetworksCode("Colombia", "Avantel", "You can check Balance by typing  *901", "", "tag"),
+                new NetworksCode("Colombia", "ETB", "Visit the Etb website at etb.co", "", "tag"),
+
+
                 new NetworksCode("Costa Rica", "", "", "", "tag"),
                 new NetworksCode("Cuba", "", "", "", "tag"),
 
@@ -203,21 +257,52 @@ public class NetworksCode {
 
                 new NetworksCode("Curacao", "", "", "", "tag"),
                 new NetworksCode("Christmas Island", "", "", "", "tag"),
-                new NetworksCode("Cyprus", "", "", "", "tag"),
+
+
+                new NetworksCode("Cyprus", "Cyta Vodafone", "*110#", "", "tag"),
+                new NetworksCode("Cyprus", "epic (formerly MTN)", "*202#", "", "tag"),
+                new NetworksCode("Cyprus", "PrimeTel", "*133#", "", "tag"),
+
+
                 new NetworksCode("Czech Republic", "", "", "", "tag"),
-                new NetworksCode("Germany", "", "", "", "tag"),
+
+
+                new NetworksCode("Germany", "Deutsche Telekom", "*100#", "", "tag"),
+                new NetworksCode("Germany", "Vodafone", "*100#", "", "tag"),
+                new NetworksCode("Germany", "O2", "*101#", "", "tag"),
 
 
                 new NetworksCode("Djibouti", "Evatis", "*168#", "airtime", "tag"),
                 new NetworksCode("Djibouti", "Evatis", "*165#", "data", "tag"),
 
 
+                new NetworksCode("Denmark", "Telia", "*120#", "", "tag"),
+                new NetworksCode("Denmark", "Comviq", "*111#", "", "tag"),
+                new NetworksCode("Denmark", "Lycamobile", "*137#", "", "tag"),
+
+
                 new NetworksCode("Dominica", "", "", "", "tag"),
-                new NetworksCode("Dominican Republic", "", "", "", "tag"),
-                new NetworksCode("Algeria", "", "", "", "tag"),
+
+
+                new NetworksCode("Dominican Republic", "Claro", "*122#", "", "tag"),
+                new NetworksCode("Dominican Republic", "Altice Dominicana", "#131#", "", "tag"),
+
+
+
+                new NetworksCode("Algeria", "Djezzy", "Call 710 and follow the instructions", "", "tag"),
+                new NetworksCode("Algeria", "Mobilis", "*600#", "", "tag"),
+                new NetworksCode("Algeria", "Ooredoo", "*113# ", "", "tag"),
+
+
                 new NetworksCode("Ecuado", "", "", "", "tag"),
                 new NetworksCode("Estonia", "", "", "", "tag"),
-                new NetworksCode("Egypt", "", "", "", "tag"),
+
+
+                new NetworksCode("Egypt", "Vodafone", "*100#", "", "tag"),
+                new NetworksCode("Egypt", "Orange", "*100#", "", "tag"),
+                new NetworksCode("Egypt", "Etisalat", "*130#", "", "tag"),
+
+
                 new NetworksCode("Western Sahara", "", "", "", "tag"),
                 new NetworksCode("Eritrea", "", "", "", "tag"),
 
@@ -298,34 +383,59 @@ public class NetworksCode {
                 new NetworksCode("Equatorial Guinea", "Cellcom", "send bal to  28882", "data", "tag"),
 
 
-                new NetworksCode("Greece", "", "", "", "tag"),
+                new NetworksCode("Greece", "Cosmote", "Send SMS with ΥΡ to 1314,", "", "tag"),
+                new NetworksCode("Greece", "Vodafone Greece", "To check your balance, make a free call to 1252", "", "tag"),
+                new NetworksCode("Greece", "Vodafone Greece", "Text free SMS to 1228 with the word \"balance\"", "", "tag"),
+
+
                 new NetworksCode("South Georgia and the South Sandwich Islands", "", "", "", "tag"),
                 new NetworksCode("Guatemala", "", "", "", "tag"),
                 new NetworksCode("Guam", "", "", "", "tag"),
                 new NetworksCode("Guinea-Bissau", "", "", "", "tag"),
                 new NetworksCode("Guyana", "", "", "", "tag"),
-                new NetworksCode("Hong Kong", "", "", "", "tag"),
+
+
+                new NetworksCode("Hong Kong", "Csl", "*109#", "", "tag"),
+                new NetworksCode("Hong Kong", "Three", "Dial 1753175 or press [##107#]+ [send] through your handset.", "", "tag"),
+                new NetworksCode("Hong Kong", "SmarTone", "*111#", "", "tag"),
+
+
                 new NetworksCode("Heard Island and McDonald Islands", "", "", "", "tag"),
                 new NetworksCode("Honduras", "", "", "", "tag"),
                 new NetworksCode("Croatia", "", "", "", "tag"),
                 new NetworksCode("Haiti", "", "", "", "tag"),
-                new NetworksCode("Hungary", "", "", "", "tag"),
 
-                new NetworksCode("Indonesia", "", "", "", "tag"),
+                new NetworksCode("Hungary", "Magyar Telekom", "*102#", "", "tag"),
+                new NetworksCode("Hungary", "Telenor Hungary", "send SMS to number 1000", "", "tag"),
+                new NetworksCode("Hungary", "Vodafone Hungary", "Text ‘IEGYENLEG' to 171 (SMS costs 49 HUF)", "", "tag"),
 
-                new NetworksCode("Ireland", "", "", "", "tag"),
+                new NetworksCode("Indonesia", "Telkomsel", "*889#", "", "tag"),
+                new NetworksCode("Indonesia", "IM3 Ooredoo (a.k.a. Indosat)", "*123#", "", "tag"),
+                new NetworksCode("Indonesia", "3 (= Tri)", "*123#", "", "tag"),
+                new NetworksCode("Indonesia", "XL Axiata", "*123#", "", "tag"),
 
-                new NetworksCode("Israel", "", "", "", "tag"),
+                new NetworksCode("Ireland", "Eir", "*#100#", "", "tag"),
+                new NetworksCode("Ireland", "Vodafone (Ireland)", "*174#", "", "tag"),
+                new NetworksCode("Ireland", "Hutchison 3 (= Three)", "To check balance, dial 1745 for free", "", "tag"),
+
+                new NetworksCode("Israel", "Cellcom", "*11777#", "", "tag"),
+                new NetworksCode("Israel", "Partner", "*111#", "", "tag"),
+                new NetworksCode("Israel", "Pelephone", "send \"b\" to 700", "", "tag"),
 
                 new NetworksCode("Isle of Man", "", "", "", "tag"),
 
-                new NetworksCode("India", "", "", "", "tag"),
+                new NetworksCode("India", "Bharti Airtel:", "*121*2#", "", "tag"),
+                new NetworksCode("India", "Reliance Jio:", "Text \"BAL\" to 536 70", "", "tag"),
+                new NetworksCode("India", "BSNL and MTNL", "*444#", "", "tag"),
 
                 new NetworksCode("British Indian Ocean Territory", "", "", "", "tag"),
 
                 new NetworksCode("Iraq", "", "", "", "tag"),
 
-                new NetworksCode("Iran, Islamic Republic of", "", "", "", "tag"),
+                new NetworksCode("Iran, Islamic Republic of", "Hamrah-e-Aval", "Call 444 for balance enquiry or top up guide", "", "tag"),
+                new NetworksCode("Iran, Islamic Republic of", "Irancell", "*141*1#", "", "tag"),
+                new NetworksCode("Iran, Islamic Republic of", "RighTel", "*140#", "", "tag"),
+
 
                 new NetworksCode("Iceland", "", "", "", "tag"),
 
@@ -338,7 +448,9 @@ public class NetworksCode {
 
                 new NetworksCode("Jamaica", "", "", "", "tag"),
 
-                new NetworksCode("Jordan", "", "", "", "tag"),
+                new NetworksCode("Jordan", "Zain", "*116*2#", "", "tag"),
+                new NetworksCode("Jordan", "Umniah", "*1333#", "", "FALSE"),
+                new NetworksCode("Jordan", "Orange", "*155#", "", "tag"),
 
                 new NetworksCode("Japan", "", "", "", "tag"),
 
@@ -384,7 +496,8 @@ public class NetworksCode {
                 new NetworksCode("Lao People\'s Democratic Republic", "", "", "", "tag"),
 
 
-                new NetworksCode("Lebanon", "", "", "", "tag"),
+                new NetworksCode("Lebanon", "Touch", "*220#", "", "tag"),
+                new NetworksCode("Lebanon", "Alfa", "*111#", "", "tag"),
 
 
                 new NetworksCode("Saint Lucia", "", "", "", "tag"),
@@ -423,7 +536,9 @@ public class NetworksCode {
 
                 new NetworksCode("Libyan Arab Jamahiriya", "", "", "", "tag"),
 
-                new NetworksCode("Morocco", "", "", "", "tag"),
+                new NetworksCode("Morocco", "Maroc Telecom", "#580#", "", "tag"),
+                new NetworksCode("Morocco", "Orange", "#554#", "", "tag"),
+                new NetworksCode("Morocco", "Inwi", "*120#", "", "tag"),
 
                 new NetworksCode("Monaco", "", "", "", "tag"),
 
@@ -451,7 +566,9 @@ public class NetworksCode {
 
                 new NetworksCode("Mongolia", "", "", "", "tag"),
 
-                new NetworksCode("Macao", "", "", "", "tag"),
+                new NetworksCode("Macao", "CTM (MobiWeb)", "*122#", "", "tag"),
+                new NetworksCode("Macao", "Three Macau", "*105#", "", "tag"),
+                new NetworksCode("Macao", "SmarTone", "*137#", "", "tag"),
 
                 new NetworksCode("Northern Mariana Islands", "", "", "", "tag"),
 
@@ -484,9 +601,14 @@ public class NetworksCode {
 
 
 
-                new NetworksCode("Mexico", "", "", "", "tag"),
+                new NetworksCode("Mexico", "Telcel", "*133#", "", "tag"),
+                new NetworksCode("Mexico", "Movistar", "*100#", "", "tag"),
+                new NetworksCode("Mexico", "AT&T Unidos Mexico", "*777#", "", "tag"),
 
-                new NetworksCode("Malaysia", "", "", "", "tag"),
+                new NetworksCode("Malaysia", "DiGi", "*126#", "", "tag"),
+                new NetworksCode("Malaysia", "Maxis", "*122#", "", "tag"),
+                new NetworksCode("Malaysia", "Celcom", "*118*1*1*2#", "", "tag"),
+                new NetworksCode("Malaysia", "U Mobile", "*118#", "", "tag"),
 
                 new NetworksCode("Mozambique", "Mcel", "*123#", "", "tag"),
                 new NetworksCode("Mozambique", "Vodacom", "*100#", "", "tag"),
@@ -528,16 +650,23 @@ public class NetworksCode {
                 new NetworksCode("Nepal", "", "", "", "tag"),
 
                 new NetworksCode("Nauru", "", "", "", "tag"),
-
+ 
                 new NetworksCode("Niue", "", "", "", "tag"),
 
                 new NetworksCode("New Zealand", "", "", "", "tag"),
 
-                new NetworksCode("Oman", "", "", "", "tag"),
+                new NetworksCode("Oman", "Omantel", "*100#", "", "tag"),
+                new NetworksCode("Oman", "Ooredoo", "Dial *141*4*9# or *141*377# (for tourist Sim)", "", "tag"),
 
-                new NetworksCode("Panama", "", "", "", "tag"),
+                new NetworksCode("Panama", "Móvil", "*165#", "", "tag"),
+                new NetworksCode("Panama", "Claro", "*103#", "", "tag"),
+                new NetworksCode("Panama", "Digicel", "*120*1#", "", "tag"),
+                new NetworksCode("Panama", "Movistar", "*123#", "", "tag"),
 
-                new NetworksCode("Peru", "", "", "", "tag"),
+                new NetworksCode("Peru", "Movistar Peru", "*515#", "", "tag"),
+                new NetworksCode("Peru", "Claro Peru", "Text \"SALDO\" to 777", "", "tag"),
+                new NetworksCode("Peru", "Entel Peru", "*144#", "", "tag"),
+                new NetworksCode("Peru", "Bitel", "*121#", "", "tag"),
 
                 new NetworksCode("French Polynesia", "", "", "", "tag"),
 
@@ -547,7 +676,10 @@ public class NetworksCode {
 
                 new NetworksCode("Pakistan", "", "", "", "tag"),
 
-                new NetworksCode("Poland", "", "", "", "tag"),
+                new NetworksCode("Poland", "Play", "*111#", "", "tag"),
+                new NetworksCode("Poland", "Orange", "*124#", "", "tag"),
+                new NetworksCode("Poland", "Plus", "*101#", "", "tag"),
+                new NetworksCode("Poland", "T-Mobile", "*101#", "", "tag"),
 
                 new NetworksCode("Saint Pierre and Miquelon", "", "", "", "tag"),
 
@@ -563,7 +695,9 @@ public class NetworksCode {
 
                 new NetworksCode("Paraguay", "", "", "", "tag"),
 
-                new NetworksCode("Qatar", "", "", "", "tag"),
+                new NetworksCode("Qatar", "Ooredoo", "*129#", "", "tag"),
+                new NetworksCode("Qatar", "Ooredoo", "*129*14#", "", "tag"),
+                new NetworksCode("Qatar", "Vodafone", "100#", "", "tag"),
 
                 new NetworksCode("Réunion", "", "", "", "tag"),
 
@@ -571,7 +705,9 @@ public class NetworksCode {
 
                 new NetworksCode("Serbia", "", "", "", "tag"),
 
-                new NetworksCode("Russia", "", "", "", "tag"),
+                new NetworksCode("Russia", "MegaFon", "*558#", "", "tag"),
+                new NetworksCode("Russia", "Mts", "#100#", "", "tag"),
+                new NetworksCode("Russia", "Tele2", "*105#", "", "tag"),
 
                 new NetworksCode("Rwanda", "Mtn", "*110#", "airtime", "tag"),
                 new NetworksCode("Rwanda", "Mtn", "*345*5#", "data", "tag"),
@@ -580,7 +716,11 @@ public class NetworksCode {
 
 
 
-                new NetworksCode("Saudi Arabia", "", "", "", "tag"),
+                new NetworksCode("Saudi Arabia", "STC", "Text 8888 to 900", "", "tag"),
+                new NetworksCode("Saudi Arabia", "Mobily", "*1411#", "", "tag"),
+                new NetworksCode("Saudi Arabia", "Zain", "Text empty message to 959", "", "tag"),
+                new NetworksCode("Saudi Arabia", "Friendi", "Call 959 and follow the instructions", "", "tag"),
+                new NetworksCode("Saudi Arabia", "Virgin", "*102#", "", "tag"),
 
                 new NetworksCode("Solomon Islands", "", "", "", "tag"),
 
@@ -597,7 +737,10 @@ public class NetworksCode {
 
                 new NetworksCode("Sweden", "", "", "", "tag"),
 
-                new NetworksCode("Singapore", "", "", "", "tag"),
+                new NetworksCode("Singapore", "Singtel Mobile", "*139#", "", "tag"),
+                new NetworksCode("Singapore", "StarHub", "*113#", "", "tag"),
+                new NetworksCode("Singapore", "M1", "#100*2*1#", "", "tag"),
+                new NetworksCode("Singapore", "TPG Telecom", "Visit the Website: https://www.tpgtelecom.com.sg/", "", "tag"),
 
                 new NetworksCode("Saint Helena, Ascension and Tristan Da Cunha", "", "", "", "tag"),
 
@@ -664,7 +807,10 @@ public class NetworksCode {
                 new NetworksCode("Togo", "Moov", "*400#", "", "tag"),
 
 
-                new NetworksCode("Thailand", "", "", "", "tag"),
+                new NetworksCode("Thailand", "AIS", "*121#", "", "tag"),
+                new NetworksCode("Thailand", "DTAC", "*101*1*9#", "", "tag"),
+                new NetworksCode("Thailand", "True Move H", "check your remaining balance by 9302", "", "tag"),
+                new NetworksCode("Thailand", "MY", "*902#", "", "tag"),
 
                 new NetworksCode("Tajikistan", "", "", "", "tag"),
 
@@ -674,11 +820,15 @@ public class NetworksCode {
 
                 new NetworksCode("Turkmenistan", "", "", "", "tag"),
 
-                new NetworksCode("Tunisia", "", "", "", "tag"),
+                new NetworksCode("Tunisia", "Ooredoo", "*4444#", "", "tag"),
+                new NetworksCode("Tunisia", "ooredoo", "*122#", "", "tag"),
+                new NetworksCode("Tunisia", "Orange", "*101#", "", "tag"),
 
                 new NetworksCode("Tonga", "", "", "", "tag"),
 
-                new NetworksCode("Turkey", "", "", "", "tag"),
+                new NetworksCode("Turkey", "Turkcell", "*123#", "", "tag"),
+                new NetworksCode("Turkey", "Vodafone", "*123#", "", "tag"),
+                new NetworksCode("Turkey", "Türk Telekom", "*123#", "", "tag"),
 
                 new NetworksCode("Trinidad and Tobago", "", "", "", "tag"),
 

@@ -23,5 +23,6 @@
     <string name="close">Close</string>
     <string name="sfr_balance_title">SFR Balance</string>
     <string name="sfr_balance_instruction">Call 950 and follow the instructions</string>
+    <string name="check_balance">Check Balance</string>
 
 </resources>

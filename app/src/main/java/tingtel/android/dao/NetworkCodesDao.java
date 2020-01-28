@@ -21,6 +21,8 @@ public interface NetworkCodesDao {
     @Query("SELECT * FROM NetworksCode WHERE country = :country")
     List<NetworksCode> getCountryNetworks(String country);
 
+    @Query("SELECT DISTINCT network FROM NetworksCode WHERE country = :country")
+    List<String> getUniqueCountryNetworks(String country);
 
     @Query("SELECT * FROM NetworksCode WHERE country = :country AND network = :network")
     List<NetworksCode> getNetworkCodes(String country, String network);

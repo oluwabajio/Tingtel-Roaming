@@ -6,48 +6,48 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/txt_dia"
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:layout_marginTop="20dp"
+        android:text="Select Your Option"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:id="@+id/sp_network"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="Select Your Option"
         android:textColor="@android:color/white"
-        android:textSize="15dp"
-        android:textStyle="bold"/>
+        android:textSize="13dp"/>
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="25dp"
         android:background="@color/colorPrimary"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal" >
 
-        <Button
-            android:id="@+id/btn_airtime"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:background="@android:color/white"
-            android:clickable="true"
-            android:text="Airtime"
-            android:layout_marginLeft="15dp"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_data"
-            android:layout_width="100dp"
+            android:id="@+id/btn_checkBalance"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
             android:background="@android:color/white"
             android:clickable="true"
-            android:layout_marginRight="10dp"
-            android:text="Data"
-          android:textColor="@color/colorPrimary"
+            android:paddingHorizontal="20dp"
+            android:text="@string/check_balance"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
     </LinearLayout>
 
